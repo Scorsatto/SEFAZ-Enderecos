@@ -1,0 +1,44 @@
+apply plugin: 'java'
+apply plugin: 'jacoco'
+apply plugin: 'application'
+
+
+mainClassName = 'view.Main'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.xerial:sqlite-jdbc:3.36.0.1'
+    implementation 'com.lowagie:itext:4.2.2'
+    implementation 'net.sf.jasperreports:jasperreports:5.1.0'
+    
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+task fatJar(type: Jar) {
+  manifest {
+    attributes 'Main-Class': 'view.Main'
+  }
+  archiveClassifier = "all"
+  from {
+    configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+  with jar
+}
+
+tasks.register('copyReports', Copy) {
+    from "relatorio/relatorio.jasper"
+    into layout.buildDirectory.dir("libs/relatorio")
+}
+
+tasks.register('copyDataBase', Copy) {
+    from "enderecos_sefaz.db3"
+    into layout.buildDirectory.dir("libs")
+}
+
+task cleanBuildPublish(type: GradleBuild) {
+    tasks = ['clean', 'fatJar', 'copyReports', 'copyDataBase']
+}

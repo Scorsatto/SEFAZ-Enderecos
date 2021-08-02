@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f03610f1-5519-4df1-9e64-1197a0320a59">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="oDestinatario" class="java.lang.String"/>
+	<parameter name="oEndereco" class="java.lang.String"/>
+	<parameter name="oContato" class="java.lang.String"/>
+	<parameter name="dDestinatario" class="java.lang.String"/>
+	<parameter name="dEndereco" class="java.lang.String"/>
+	<parameter name="dContato" class="java.lang.String"/>
+	<parameter name="conteudo" class="java.lang.String"/>
+	<columnHeader>
+		<band height="154">
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="fa39138e-b75f-466a-9e2a-530965716300" positionType="Float" x="0" y="0" width="555" height="17" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true"/>
+				<textElement textAlignment="Justified" markup="styled"/>
+				<textFieldExpression><![CDATA[$P{oDestinatario}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="a50c649c-5ecf-43d9-b8e8-fa1587afb8ce" positionType="Float" x="0" y="17" width="555" height="17" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true"/>
+				<textElement textAlignment="Justified" markup="styled"/>
+				<textFieldExpression><![CDATA[$P{oEndereco}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="13304d5d-79b4-47ab-b9df-11bd2c9063df" positionType="Float" x="0" y="34" width="555" height="17" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true"/>
+				<textElement textAlignment="Justified" markup="styled"/>
+				<textFieldExpression><![CDATA[$P{oContato}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="174ee3ea-2f1d-4305-beb3-be179ac63eb3" positionType="Float" x="0" y="100" width="555" height="17" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true"/>
+				<textElement textAlignment="Justified" markup="styled"/>
+				<textFieldExpression><![CDATA[$P{dEndereco}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="da991b27-3907-474b-965c-83ed392d49db" positionType="Float" x="0" y="83" width="555" height="17" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true"/>
+				<textElement textAlignment="Justified" markup="styled"/>
+				<textFieldExpression><![CDATA[$P{dDestinatario}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="24a46cea-2ad1-4993-aa53-9d81b8939896" positionType="Float" x="0" y="117" width="555" height="17" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true"/>
+				<textElement textAlignment="Justified" markup="styled"/>
+				<textFieldExpression><![CDATA[$P{dContato}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="6b8b91fa-14f4-48bf-9dfe-523b2e7bf65d" positionType="Float" x="0" y="134" width="555" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[!$P{conteudo}.isEmpty()]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Justified">
+					<font size="12" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CONTEÚDO: " + $P{conteudo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+</jasperReport>
